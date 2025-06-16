@@ -9,6 +9,50 @@ import java.util.List;
 
 public class NotasDaoImp implements NotasDao {
 
+	@Override
+	public void actualizarNotas(int idAlumno, int idProfesor, int idMateria, int idCurso,
+	                            int nota1, int nota2, int nota3) {
+
+	    String updateSql = "UPDATE notas_materias SET nota1 = ?, nota2 = ?, nota3 = ? " +
+	                       "WHERE id_alumno = ? AND id_profesor = ? AND id_materia = ? AND id_curso = ?";
+
+	    try (Connection connection = Conexion.getInstance().dameConnection();
+	         PreparedStatement updateStmt = connection.prepareStatement(updateSql)) {
+
+	        updateStmt.setInt(1, nota1);
+	        updateStmt.setInt(2, nota2);
+	        updateStmt.setInt(3, nota3);
+	        updateStmt.setInt(4, idAlumno);
+	        updateStmt.setInt(5, idProfesor);
+	        updateStmt.setInt(6, idMateria);
+	        updateStmt.setInt(7, idCurso);
+
+	        int filasActualizadas = updateStmt.executeUpdate();
+
+	        if (filasActualizadas == 0) {
+	            String insertSql = "INSERT INTO notas_materias " +
+	                    "(id_alumno, id_profesor, id_materia, id_curso, nota1, nota2, nota3) " +
+	                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+	            try (PreparedStatement insertStmt = connection.prepareStatement(insertSql)) {
+	                insertStmt.setInt(1, idAlumno);
+	                insertStmt.setInt(2, idProfesor);
+	                insertStmt.setInt(3, idMateria);
+	                insertStmt.setInt(4, idCurso);
+	                insertStmt.setInt(5, nota1);
+	                insertStmt.setInt(6, nota2);
+	                insertStmt.setInt(7, nota3);
+	                insertStmt.executeUpdate();
+	            }
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+
+	
     @Override
     public List<notas> obtenerNotasConPromedio(int idProfesor, int idMateria, int idCurso) throws SQLException {
         List<notas> lista = new ArrayList<>();
