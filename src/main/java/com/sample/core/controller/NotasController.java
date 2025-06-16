@@ -31,15 +31,13 @@ public class NotasController extends HttpServlet {
                 return;
             }
 
-          
             Usuarios usuario = (Usuarios) session.getAttribute("usuarioLogueado");
             if (usuario == null) {
                 response.sendRedirect(request.getContextPath() + "/login");
                 return;
             }
 
-            int idProfesor = usuario.getId();
-
+            int idProfesor = usuario.getId(); // ✔️ este sí está
             String idMateriaParam = request.getParameter("idMateria");
             String idCursoParam = request.getParameter("idCurso");
 
@@ -50,6 +48,11 @@ public class NotasController extends HttpServlet {
 
             int idMateria = Integer.parseInt(idMateriaParam);
             int idCurso = Integer.parseInt(idCursoParam);
+
+            // ⬅️ SOLUCIÓN: Guardar en sesión
+            session.setAttribute("idProfesor", idProfesor);
+            session.setAttribute("idMateria", idMateria);
+            session.setAttribute("idCurso", idCurso);
 
             List<notas> listaNotas = notasDao.obtenerNotasConPromedio(idProfesor, idMateria, idCurso);
 
