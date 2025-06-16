@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Notas de Alumnos</title>
     <script src="scripts/jquery/jquery-3.7.1.min.js"></script>
+    <script src="scripts/eliminarNotas.js"></script>
 	<script src="scripts/guardarNotas.js"></script>
     <style>
        body {
@@ -89,16 +90,17 @@
     <h2>Notas de Alumnos</h2>
 
     <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Nota 1</th>
-                <th>Nota 2</th>
-                <th>Nota 3</th>
-                <th>Promedio</th>
-            </tr>
-        </thead>
+<thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Nota 1</th>
+        <th>Nota 2</th>
+        <th>Nota 3</th>
+        <th>Promedio</th>
+        <th>Eliminar</th> <!-- una nueva columna agregue aqui -->
+    </tr>
+</thead>
 <tbody>
 <%
     List<notas> lista = (List<notas>) request.getAttribute("notas");
@@ -108,22 +110,24 @@
             <tr>
                 <td><%= n.getNombreAlumno() %></td>
                 <td><%= n.getApellidoAlumno() %></td>
-				<td><input type="number" class="nota1" value="<%= n.getNota1() %>" /></td>
-				<td><input type="number" class="nota2" value="<%= n.getNota2() %>" /></td>
-				<td><input type="number" class="nota3" value="<%= n.getNota3() %>" /></td>
-			<td>
-    			<%= n.getPromedio() %>
-    			<button class="guardarBtn" data-id="<%= n.getIdAlumno() %>">Guardar</button>
-</td>
-
+                <td><input type="number" class="nota1" value="<%= n.getNota1() %>" /></td>
+                <td><input type="number" class="nota2" value="<%= n.getNota2() %>" /></td>
+                <td><input type="number" class="nota3" value="<%= n.getNota3() %>" /></td>
+                <td>
+                    <%= n.getPromedio() %>
+                    <button class="guardarBtn" data-id="<%= n.getIdAlumno() %>">Guardar</button>
+                </td>
+                <td>
+                    <button class="eliminar-btn" data-id="<%= n.getIdAlumno() %>">Eliminar</button>
+                </td>
             </tr>
 <%
         }
     } else {
 %>
-        <tr>
-            <td colspan="6">No hay notas disponibles.</td>
-        </tr>
+    <tr>
+        <td colspan="7">No hay notas disponibles.</td>
+    </tr>
 <%
     }
 %>

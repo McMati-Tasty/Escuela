@@ -8,6 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotasDaoImp implements NotasDao {
+	
+	@Override
+	public void eliminarNotasPorAlumno(int idAlumno) {
+	    String sql = "UPDATE notas_materias SET nota1 = NULL, nota2 = NULL, nota3 = NULL WHERE id_alumno = ?";
+
+	    try (Connection conn = Conexion.getInstance().dameConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+	        stmt.setInt(1, idAlumno);
+	        stmt.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
 
 	@Override
 	public void actualizarNotas(int idAlumno, int idProfesor, int idMateria, int idCurso,
