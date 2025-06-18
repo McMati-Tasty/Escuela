@@ -1,0 +1,111 @@
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    margin: 0;
+    padding: 0;
+    color: #242424;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 0 0 12px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-button {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+}
+
+.back-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.nombreColegio {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin: 20px 0 20px;
+}
+
+.container, .table-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+.table-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 10px 6px;
+    font-size: 0.95rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    background: linear-gradient(135deg, #e00000 0%, #c00000 100%);
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.col-nota     { width: 8%; }
+.col-promedio { width: 12%; }
+.col-acciones { width: 12%; }
+
+tbody tr {
+    background-color: rgba(255, 255, 255, 0.75);
+    transition: background 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(249, 249, 249, 0.75);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 245, 245, 0.9);
+}
+
+.eliminar-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+}
+
+.promedio-value {
+    padding: 6px 10px;
+    font-size: 0.95rem;
+}
