@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    margin: 0;
+    padding: 0;
+    color: #242424;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 0 0 16px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+}
+
+.nombreColegio {
+    font-size: 1.7rem;
+    color: #1a1a1a;
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    flex-grow: 1;
+}
+
+/* Barra de usuario debajo del header */
+.user-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.user-bar .user-info {
+    font-weight: 500;
+}
+
+.logout-link {
+    font-weight: 600;
+    color: #e00000;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.logout-link:hover {
+    background: rgba(224, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #1a1a1a;
+    margin: 30px 0 15px;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #e00000 0%, #ff6b6b 100%);
+    border-radius: 2px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+
+/* Acordeón */
+.acordeon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e00000 0%, #c00000 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 8px;
+}
+
+.acordeon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.acordeon i {
+    transition: transform 0.3s ease;
+}
+
+.acordeon.active i {
+    transform: rotate(180deg);
+}
+
+.panel {
+    display: none;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.materia-item a {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #242424;
+    transition: background 0.2s ease;
+}
+
+.materia-item a:hover {
+    background: rgba(224, 0, 0, 0.1);
+}
+
+.no-courses {
+    text-align: center;
+    background: rgba(248, 217, 218, 0.85);
+    color: #721c24;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 30px;
+    font-size: 1rem;
+}
